@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "965452038916",
+    "project_id": "lmfao-2edf6",
+    "storage_bucket": "lmfao-2edf6.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:965452038916:android:bf44a27aef3e6cd78a4651",
+        "android_client_info": {
+          "package_name": "com.example.mis_lab2"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMUez3KmQi-kAYMXNM2B175GIDCDUZv8A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

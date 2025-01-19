@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../models/joke.dart';
 import '../services/api_services.dart';
+import '../widgets/joke_card.dart';
 
 class JokeListScreen extends StatelessWidget {
   final String type;
@@ -12,7 +13,7 @@ class JokeListScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text('$type Jokes')),
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage('assets/comedy_bg.jpg'),
             fit: BoxFit.cover,
@@ -22,7 +23,7 @@ class JokeListScreen extends StatelessWidget {
           future: ApiServices.getJokesByType(type),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return Center(child: CircularProgressIndicator());
+              return const Center(child: CircularProgressIndicator());
             } else if (snapshot.hasError) {
               return Center(child: Text('Error: ${snapshot.error}'));
             } else {
@@ -30,22 +31,8 @@ class JokeListScreen extends StatelessWidget {
               return ListView.builder(
                 itemCount: jokes.length,
                 itemBuilder: (context, index) {
-                  return ListTile(
-                    title: Container(
-                      color: Colors.black.withOpacity(0.5),
-                      child: Text(
-                        jokes[index].setup,
-                        style: TextStyle(fontSize: 18, color: Colors.white),
-                      ),
-                    ),
-                    subtitle: Container(
-                      color: Colors.black.withOpacity(0.5),
-                      child: Text(
-                        jokes[index].punchline,
-                        style: TextStyle(fontSize: 16, color: Colors.white),
-                      ),
-                    ),
-                  );
+                  final joke = jokes[index];
+                  return JokeCard(joke: joke);
                 },
               );
             }

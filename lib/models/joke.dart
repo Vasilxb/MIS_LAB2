@@ -1,15 +1,28 @@
 class Joke {
+  final int id;
   final String type;
   final String setup;
   final String punchline;
+  bool isFavorite;
 
-  Joke({required this.type, required this.setup, required this.punchline});
+  Joke({
+    required this.id,
+    required this.type,
+    required this.setup,
+    required this.punchline,
+    this.isFavorite = false, // Default to not favorite
+  });
 
   factory Joke.fromJson(Map<String, dynamic> json) {
     return Joke(
+      id: json['id'],
       type: json['type'],
       setup: json['setup'],
       punchline: json['punchline'],
     );
+  }
+  // Helper method for toggling favorite status
+  void toggleFavorite() {
+    isFavorite = !isFavorite;
   }
 }
